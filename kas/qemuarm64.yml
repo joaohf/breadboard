@@ -1,0 +1,9 @@
+header:
+  version: 14
+  includes:
+  - kas/include/breadboard-base.yml
+  - kas/include/fwup.yml
+  - kas/include/nervescloud.yml
+  - kas/include/qemu.yml
+
+machine: qemuarm64-uboot

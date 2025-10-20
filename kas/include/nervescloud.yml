@@ -1,0 +1,17 @@
+header:
+  version: 14
+
+local_conf_header:
+  nerves cloud configuration: |
+    # Nerves Hub product name
+    FWUP_META_PRODUCT = "YoctoFwup"
+
+    # Define NERVES_HUB_LINK variables below
+    #NERVES_HUB_LINK_PRODUCT_KEY = ""
+    #NERVES_HUB_LINK_PRODUCT_SECRET = ""
+
+    # 1st build
+    FWUP_META_VERSION = "1.0.1"
+    # 2nd build
+    #FWUP_META_VERSION = "1.2.0"
+

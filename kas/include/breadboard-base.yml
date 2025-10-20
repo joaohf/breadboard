@@ -1,0 +1,85 @@
+header:
+  version: 14
+
+distro: poky
+
+repos:
+  openembedded-core:
+    url: git://git.openembedded.org/openembedded-core.git
+    branch: master
+    layers:
+      meta:
+
+  bitbake:
+    url: git://git.openembedded.org/bitbake.git
+    branch: master
+    layers:
+      bitbake: disabled
+
+  meta-yocto:
+    url: git://git.yoctoproject.org/git/meta-yocto.git
+    branch: master
+    layers:
+      meta-poky:
+      meta-yocto-bsp:
+
+  meta-openembedded:
+    url: git://git.openembedded.org/meta-openembedded
+    branch: master
+    layers:
+      meta-oe:
+
+  meta-erlang:
+    url: https://github.com/meta-erlang/meta-erlang
+    branch: master
+
+  meta-fwup:
+    url: https://github.com/joaohf/meta-fwup
+    branch: master
+    layers:
+      meta-fwup:
+
+  meta-nerves-hub:
+    url: https://github.com/joaohf/meta-nerves-hub
+    branch: master
+
+  meta-breadboard:
+    layers:
+      meta-breadboard:
+
+local_conf_header:
+  base: |
+    PACKAGE_CLASSES = "package_ipk"
+    INIT_MANAGER = "systemd"
+
+  enable buildhistory: |
+    USER_CLASSES ?= "buildhistory"
+    BUILDHISTORY_COMMIT = "1"
+
+  easy debug:
+    EXTRA_IMAGE_FEATURES ?= "allow-empty-password allow-root-login empty-root-password post-install-logging"
+
+  meta-erlang-erlang: |
+    ERLANG_VERSION = "28.1"
+    PREFERRED_VERSION_erlang = "${ERLANG_VERSION}"
+    PREFERRED_VERSION_erlang-native = "${ERLANG_VERSION}"
+    PREFERRED_VERSION_nativesdk-erlang = "${ERLANG_VERSION}"
+
+  meta-erlang-elixir: |
+    ELIXIR_VERSION = "1.18.4"
+    PREFERRED_VERSION_elixir = "${ELIXIR_VERSION}"
+    PREFERRED_VERSION_elixir-native = "${ELIXIR_VERSION}"
+    PREFERRED_VERSION_nativesdk-elixir = "${ELIXIR_VERSION}"
+
+  connman remove unused features: |
+    PACKAGECONFIG:remove:pn-connman = "3g bluez wispr"
+
+  connman with iwd support: |
+    WIRELESS_DAEMON = "iwd"
+
+  remove unneeded distro and machine features: |
+    DISTRO_FEATURES:remove = "3g x11 wayland vulkan pulseaudio gobject-introspection-data bluetooth alsa nfs nfc opengl"
+    MACHINE_FEATURES:remove = "alsa bluetooth qemu-usermode"
+  
+target:
+  - breadboard-image-cmdline

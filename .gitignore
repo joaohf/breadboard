@@ -1,0 +1,9 @@
+meta-erlang
+meta-fwup
+meta-nerves-hub
+meta-openembedded
+meta-raspberrypi
+meta-qemu-bsp
+meta-yocto
+openembedded-core
+bitbake
