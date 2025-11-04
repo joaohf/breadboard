@@ -17,11 +17,12 @@ This project is able to build a working image, however there are some missing pa
 
 These are open points for future improvements. However, erlang-red usable and works as intent.
 
-### Ideas with erlang-red
+### Ideas to do with erlang-red
 
+- explore raspberrypi hardware modules
 - connect a cluster breadboard with erlang-red
 - control some LEDs and other hardware devices using i2c, spi, gpio
-- improve NervesHubAgent to autodetect network
+- read sensors
 
 ## Procedures for baking breadboard image
 
@@ -57,6 +58,8 @@ The aim here is to build a ready to flash raspberrypi image made with Yocto Proj
 
    The above command fetches all dependencies and makes a pre-configured bitbake environment based on yml fragment files available at `kas` folder.
 
+   Note that note raspberrypi0 and raspberrypi4 are also supported (see _kas/demos_ folder).
+
 1. Call bitbake to create the target image _breadboard-image-cmdline_:
     ```
     $ bitbake breadboard-image-cmdline
@@ -86,4 +89,7 @@ After get network configured, you can access erlang-red web interface: http://[r
 
 And also inspect if raspberry gets connected into Nerves Cloud service at: https://nervescloud.com/
 
-## Acknowledge
+## Acknowledges
+
+- [Gerrit Riessen](https://github.com/gorenje), [erlang-red](https://github.com/gorenje/erlang-red)'s author, for exploring flow based programming with BEAM languages
+- [NervesCloud](https://nervescloud.com/) and [fwup](https://github.com/fwup-home/fwup) team.

@@ -1,0 +1,12 @@
+header:
+  version: 14
+  includes:
+  - kas/raspberrypi5.yml
+
+local_conf_header:
+  wifi: |
+    LICENSE_FLAGS_ACCEPTED = "synaptics-killswitch"
+    DISTRO_FEATURES:append = " wifi"
+
+target:
+  - breadboard-image-cmdline
